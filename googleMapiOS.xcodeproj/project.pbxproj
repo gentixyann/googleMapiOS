@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A422EDD04132BD3D055B317 /* libPods-googleMapiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9254596CF89F8DBF471825CF /* libPods-googleMapiOS.a */; };
 		B2936053206C9FEC001B2B6E /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2936052206C9FEC001B2B6E /* PlacesViewController.swift */; };
 		B2E385FB206C6E6700505882 /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2E385FA206C6E6700505882 /* key.plist */; };
 		B2E385FD206C851D00505882 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E385FC206C851C00505882 /* CoreLocation.framework */; };
@@ -16,11 +15,11 @@
 		B2FB165B206C6BFC00A2B413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2FB1659206C6BFC00A2B413 /* Main.storyboard */; };
 		B2FB165D206C6BFC00A2B413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2FB165C206C6BFC00A2B413 /* Assets.xcassets */; };
 		B2FB1660206C6BFC00A2B413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2FB165E206C6BFC00A2B413 /* LaunchScreen.storyboard */; };
+		D48640B285114932D5906796 /* Pods_googleMapiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44BB72D35A32D4D9B58A279 /* Pods_googleMapiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24D1FF5E7A07DBC0DE724E9B /* Pods-googleMapiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-googleMapiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-googleMapiOS/Pods-googleMapiOS.debug.xcconfig"; sourceTree = "<group>"; };
-		9254596CF89F8DBF471825CF /* libPods-googleMapiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-googleMapiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA31A352FEC03C379859D913 /* Pods-googleMapiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-googleMapiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-googleMapiOS/Pods-googleMapiOS.release.xcconfig"; sourceTree = "<group>"; };
 		B2936052206C9FEC001B2B6E /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		B2E385FA206C6E6700505882 /* key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
@@ -32,6 +31,7 @@
 		B2FB165C206C6BFC00A2B413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2FB165F206C6BFC00A2B413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2FB1661206C6BFC00A2B413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E44BB72D35A32D4D9B58A279 /* Pods_googleMapiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_googleMapiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2E385FD206C851D00505882 /* CoreLocation.framework in Frameworks */,
-				5A422EDD04132BD3D055B317 /* libPods-googleMapiOS.a in Frameworks */,
+				D48640B285114932D5906796 /* Pods_googleMapiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				B2E385FC206C851C00505882 /* CoreLocation.framework */,
-				9254596CF89F8DBF471825CF /* libPods-googleMapiOS.a */,
+				E44BB72D35A32D4D9B58A279 /* Pods_googleMapiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -216,9 +216,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-googleMapiOS/Pods-googleMapiOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
