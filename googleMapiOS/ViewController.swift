@@ -14,12 +14,18 @@ import CoreLocation
 
 class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
-    @IBAction func autocompleteClicked(_ sender: UIButton) {
-        
+    @IBAction func autocompleteClicked(_ sender: Any) {
         let placePickerController = GMSAutocompleteViewController()
-        placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
-        present(placePickerController, animated: true, completion: nil)
+               placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
+                present(placePickerController, animated: true, completion: nil)
     }
+    
+//    @IBAction func autocompleteClicked(_ sender: UIButton) {
+//
+//        let placePickerController = GMSAutocompleteViewController()
+//        placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
+//        present(placePickerController, animated: true, completion: nil)
+//    }
     
     
     @IBOutlet weak var mapView: GMSMapView!

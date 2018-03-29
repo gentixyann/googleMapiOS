@@ -158,7 +158,7 @@ open class PlaceDetails: CustomStringConvertible {
     }
     
     open var description: String {
-        return "\nPlace: \(name).\nAddress: \(formattedAddress).\ncoordinate: (\(coordinate.latitude), \(coordinate.longitude))\nPhone No.: \(formattedPhoneNo)\n"
+        return "\nPlace: \(name).\nAddress: \(formattedAddress).\ncoordinate: (\(coordinate.latitude), \(coordinate.longitude))\nPhone No.: \(String(describing: formattedPhoneNo))\n"
     }
 }
 
@@ -316,7 +316,7 @@ extension GooglePlacesAutocompleteContainer {
 // MARK: - GooglePlacesAutocompleteContainer (UISearchBarDelegate)
 extension GooglePlacesAutocompleteContainer: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.characters.count > 0 {
+        if searchText.count > 0 {
             self.places = []
         } else {
             getPlaces(searchText)
@@ -366,7 +366,7 @@ extension GooglePlacesAutocompleteContainer: UISearchBarDelegate {
 extension GooglePlacesAutocompleteContainer {
     public func updateSearchResults(for searchController: UISearchController)
     {
-        if let searchText = searchController.searchBar.text, searchText.characters.count > 0 {
+        if let searchText = searchController.searchBar.text, searchText.count > 0 {
             getPlaces(searchText)
         }
         else {
@@ -417,7 +417,7 @@ class GooglePlacesRequestHelpers {
     fileprivate class func doRequest(_ urlString: String, params: [String: String], success: @escaping (NSDictionary) -> ()) {
         if let url = URL(string: "\(urlString)?\(query(params as [String : AnyObject]))"){
             
-            let request = NSMutableURLRequest(
+            _ = NSMutableURLRequest(
                 url:url
             )
             
