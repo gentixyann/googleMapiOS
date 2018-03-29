@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A422EDD04132BD3D055B317 /* libPods-googleMapiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9254596CF89F8DBF471825CF /* libPods-googleMapiOS.a */; };
 		B2E385FB206C6E6700505882 /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2E385FA206C6E6700505882 /* key.plist */; };
+		B2E385FD206C851D00505882 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E385FC206C851C00505882 /* CoreLocation.framework */; };
 		B2FB1656206C6BFB00A2B413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FB1655206C6BFB00A2B413 /* AppDelegate.swift */; };
 		B2FB1658206C6BFC00A2B413 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FB1657206C6BFC00A2B413 /* ViewController.swift */; };
 		B2FB165B206C6BFC00A2B413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2FB1659206C6BFC00A2B413 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		9254596CF89F8DBF471825CF /* libPods-googleMapiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-googleMapiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA31A352FEC03C379859D913 /* Pods-googleMapiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-googleMapiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-googleMapiOS/Pods-googleMapiOS.release.xcconfig"; sourceTree = "<group>"; };
 		B2E385FA206C6E6700505882 /* key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
+		B2E385FC206C851C00505882 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B2FB1652206C6BFB00A2B413 /* googleMapiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleMapiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FB1655206C6BFB00A2B413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2FB1657206C6BFC00A2B413 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2E385FD206C851D00505882 /* CoreLocation.framework in Frameworks */,
 				5A422EDD04132BD3D055B317 /* libPods-googleMapiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		125308F1078D028DE38A2939 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2E385FC206C851C00505882 /* CoreLocation.framework */,
 				9254596CF89F8DBF471825CF /* libPods-googleMapiOS.a */,
 			);
 			name = Frameworks;
