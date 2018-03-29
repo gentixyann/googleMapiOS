@@ -41,23 +41,42 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // GoogleMapの初期化
-        self.mapView.isMyLocationEnabled = true
-        self.mapView.mapType = GMSMapViewType.normal
-        self.mapView.settings.compassButton = true
-        self.mapView.settings.myLocationButton = true
-        self.mapView.delegate = self
+        let camera = GMSCameraPosition.camera(withLatitude:47.603,
+                                              longitude:-122.331,
+                                              zoom:14)
+        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        mapView.delegate = self
+        self.view = mapView
+        //let position = CLLocationCoordinate2D(latitude: 10, longitude: 10)
+        let position = CLLocationCoordinate2D(latitude:47.603,
+                                              longitude:-122.331)
+        let marker = GMSMarker(position: position)
+        marker.title = "Hello World"
+        marker.map = mapView
+    
+//        // GoogleMapの初期化
+//        self.mapView.isMyLocationEnabled = true
+//        self.mapView.mapType = GMSMapViewType.normal
+//        self.mapView.settings.compassButton = true
+//        self.mapView.settings.myLocationButton = true
+//        self.mapView.delegate = self
+//
+//        // 位置情報関連の初期化
+//        self.locationManager = CLLocationManager()
+//        self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+//        self.locationManager?.requestAlwaysAuthorization()
+//        self.locationManager?.distanceFilter = 50
+//        self.locationManager?.startUpdatingLocation()
+//        self.locationManager?.delegate = self
+//
+//        self.placesClient = GMSPlacesClient.shared()
         
-        // 位置情報関連の初期化
-        self.locationManager = CLLocationManager()
-        self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager?.requestAlwaysAuthorization()
-        self.locationManager?.distanceFilter = 50
-        self.locationManager?.startUpdatingLocation()
-        self.locationManager?.delegate = self
-        
-        self.placesClient = GMSPlacesClient.shared()
-        
+    }
+    
+    
+    func mapView(_ mapView:GMSMapView, didTapPOIWithPlaceID placeID:String,
+                 name:String, location:CLLocationCoordinate2D) {
+        print("You tapped \(name): \(placeID), \(location.latitude)/\(location.longitude)")
     }
     
     override func didReceiveMemoryWarning() {
