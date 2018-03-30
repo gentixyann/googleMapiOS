@@ -52,6 +52,7 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
                                               longitude:-122.331)
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
+        marker.snippet = "Population: 8,174,100"
         marker.map = mapView
     
 //        // GoogleMapの初期化
