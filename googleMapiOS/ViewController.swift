@@ -47,13 +47,13 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView.delegate = self
         self.view = mapView
-        //let position = CLLocationCoordinate2D(latitude: 10, longitude: 10)
         let position = CLLocationCoordinate2D(latitude:47.603,
                                               longitude:-122.331)
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
+        mapView.settings.myLocationButton = true
     
 //        // GoogleMapの初期化
 //        self.mapView.isMyLocationEnabled = true
@@ -83,6 +83,11 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK:GMSMapViewDelegate マップタッチで緯度経度ゲット
+    func mapView(_ mapView:GMSMapView, didTapAt coordinate:CLLocationCoordinate2D) {
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
     
     // MARK: CLLocationManagerDelegate
