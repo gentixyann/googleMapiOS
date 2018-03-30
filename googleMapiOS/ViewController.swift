@@ -74,10 +74,19 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         
     }
     
-    
+    //ランドマークをinforwindowに出す
+    // Declare GMSMarker instance at the class level.
+    let infoMarker = GMSMarker()
+    // Attach an info window to the POI using the GMSMarker.
     func mapView(_ mapView:GMSMapView, didTapPOIWithPlaceID placeID:String,
                  name:String, location:CLLocationCoordinate2D) {
-        print("You tapped \(name): \(placeID), \(location.latitude)/\(location.longitude)")
+        infoMarker.snippet = placeID
+        infoMarker.position = location
+        infoMarker.title = name
+        infoMarker.opacity = 0;
+        infoMarker.infoWindowAnchor.y = 1
+        infoMarker.map = mapView
+        mapView.selectedMarker = infoMarker
     }
     
     override func didReceiveMemoryWarning() {
