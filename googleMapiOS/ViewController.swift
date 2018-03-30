@@ -88,6 +88,12 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
     // MARK:GMSMapViewDelegate マップタッチで緯度経度ゲット
     func mapView(_ mapView:GMSMapView, didTapAt coordinate:CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
+        let position = coordinate
+        let marker = GMSMarker(position: position)
+        marker.title = "Hello World"
+        marker.snippet = "Population: 8,174,100"
+        marker.map = mapView
+        
     }
     
     // MARK: CLLocationManagerDelegate
