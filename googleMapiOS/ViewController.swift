@@ -49,11 +49,13 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         self.view = mapView
         let position = CLLocationCoordinate2D(latitude:47.603,
                                               longitude:-122.331)
+        mapView.isMyLocationEnabled = true
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
         mapView.settings.myLocationButton = true
+        
     
 //        // GoogleMapの初期化
 //        self.mapView.isMyLocationEnabled = true
@@ -102,7 +104,6 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
-        
     }
     
     // MARK: CLLocationManagerDelegate
