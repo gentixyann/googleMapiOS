@@ -55,25 +55,6 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
         mapView.settings.myLocationButton = true
-        
-    
-//        // GoogleMapの初期化
-//        self.mapView.isMyLocationEnabled = true
-//        self.mapView.mapType = GMSMapViewType.normal
-//        self.mapView.settings.compassButton = true
-//        self.mapView.settings.myLocationButton = true
-//        self.mapView.delegate = self
-//
-//        // 位置情報関連の初期化
-//        self.locationManager = CLLocationManager()
-//        self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-//        self.locationManager?.requestAlwaysAuthorization()
-//        self.locationManager?.distanceFilter = 50
-//        self.locationManager?.startUpdatingLocation()
-//        self.locationManager?.delegate = self
-//
-//        self.placesClient = GMSPlacesClient.shared()
-        
     }
     
     //ランドマークをinforwindowに出す
@@ -107,15 +88,15 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
     }
     
     // MARK: CLLocationManagerDelegate
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if !self.initView {
-            // 初期描画時のマップ中心位置の移動
-            let camera = GMSCameraPosition.camera(withTarget: (locations.last?.coordinate)!, zoom: self.zoomLevel)
-            self.mapView.camera = camera
-            self.locationManager?.stopUpdatingLocation()
-            self.initView = true
-        }
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if !self.initView {
+//            // 初期描画時のマップ中心位置の移動
+//            let camera = GMSCameraPosition.camera(withTarget: (locations.last?.coordinate)!, zoom: self.zoomLevel)
+//            self.mapView.camera = camera
+//            self.locationManager?.stopUpdatingLocation()
+//            self.initView = true
+//        }
+//    }
     
     
 }
