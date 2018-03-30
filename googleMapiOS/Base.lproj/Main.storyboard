@@ -43,6 +43,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="In2-nR-7lJ" id="IEP-Hr-dxt"/>
+                        <segue destination="PNG-UI-7BI" kind="show" identifier="View Controller" id="VMZ-ZM-yTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
