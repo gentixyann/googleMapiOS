@@ -8,5 +8,6 @@ pod 'GoogleMaps'
 pod 'GooglePlacePicker'
 pod 'GooglePlaces'
 pod 'GooglePlacesSearchController'
+pod 'youtube-ios-player-helper'
 
 end

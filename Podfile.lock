@@ -10,19 +10,22 @@ PODS:
   - GooglePlaces (2.6.0):
     - GoogleMaps/Base (= 2.6.0)
   - GooglePlacesSearchController (0.1.7)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
   - GooglePlacesSearchController
+  - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlacePicker: e4488625effb006f59de49e14b7a603e463e4261
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
   GooglePlacesSearchController: 0ac4fedf1582d2e44329c417a6eed80ccf62d716
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: c32588b3a2602f48c010e26dcba2328f6f6862f9
+PODFILE CHECKSUM: 90215701f3831bfea00a3e159d021d5d04e7de92
 
 COCOAPODS: 1.4.0
