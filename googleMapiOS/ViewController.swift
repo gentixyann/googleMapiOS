@@ -14,6 +14,16 @@ import CoreLocation
 
 class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMSMapViewDelegate, GMSAutocompleteFetcherDelegate, CLLocationManagerDelegate {
     
+    @IBAction func goMap(_ segue:UIStoryboardSegue) {}
+    
+
+    @IBAction func moveYoutube(_ sender: Any) {
+        performSegue(withIdentifier: "nextSegue", sender: nil)
+    }
+    
+    
+    
+    
     //     * Called when an autocomplete request returns an error.
     //     * @param error the error that was received.
     public func didFailAutocompleteWithError(_ error: Error) {
