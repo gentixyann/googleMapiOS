@@ -83,17 +83,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     }
     
     
-    
-    
-    
-    
-//
-//    @IBAction func autocompleteClicked(_ sender: Any) {
-//        let placePickerController = GMSAutocompleteViewController()
-//               placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
-//                present(placePickerController, animated: true, completion: nil)
-//    }
-    
     @IBAction func autocompleteClicked(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: searchResultController)
         searchController.searchBar.delegate = self
@@ -109,12 +98,14 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
             let position = CLLocationCoordinate2DMake(lat, lon)
             let marker = GMSMarker(position: position)
             let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10)
-            let googleMapsView = GMSMapView.map(withFrame: .zero, camera: camera)
-            self.view = googleMapsView
+            let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+            mapView.delegate = self
+            self.view = mapView
             
             //self.googleMapsView.camera = camera
             marker.title = "Address : \(title)"
-            marker.map = self.googleMapsView
+            marker.map = mapView
+            //marker.map = self.googleMapsView
         }
     }
     
