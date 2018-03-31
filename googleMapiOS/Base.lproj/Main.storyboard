@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PNG-UI-7BI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rLV-QJ-g0v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,62 +11,59 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="uf5-EU-BHH">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="googleMapiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="kb2-tR-83k" customClass="ViewController" customModule="googleMapiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BOO-Zb-iHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="In2-nR-7lJ" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="113" width="375" height="554"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2W-em-Q6y">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="In2-nR-7lJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="62Y-YL-gPd"/>
-                            <constraint firstItem="In2-nR-7lJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mmk-dW-fRt"/>
-                            <constraint firstAttribute="bottom" secondItem="In2-nR-7lJ" secondAttribute="bottom" id="YlI-IR-4ZK"/>
-                            <constraint firstItem="In2-nR-7lJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="49" id="cyg-7g-4WV"/>
+                            <constraint firstItem="Q2W-em-Q6y" firstAttribute="top" secondItem="4JT-vq-zfj" secondAttribute="top" id="0eg-NN-dsq"/>
+                            <constraint firstItem="Q2W-em-Q6y" firstAttribute="leading" secondItem="4JT-vq-zfj" secondAttribute="leading" id="ci6-aX-eLv"/>
+                            <constraint firstItem="4JT-vq-zfj" firstAttribute="bottom" secondItem="Q2W-em-Q6y" secondAttribute="bottom" id="gMX-6R-vru"/>
+                            <constraint firstItem="4JT-vq-zfj" firstAttribute="trailing" secondItem="Q2W-em-Q6y" secondAttribute="trailing" id="qW1-bR-zh8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="4JT-vq-zfj"/>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Otg-2U-Ae2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="yqb-m5-I61">
+                    <navigationItem key="navigationItem" id="Dhq-VT-fPB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="u9r-sY-hHv">
                             <connections>
-                                <action selector="autocompleteClicked:" destination="BYZ-38-t0r" id="YlR-Wa-3R0"/>
+                                <action selector="autocompleteClicked:" destination="kb2-tR-83k" id="1Kd-6A-xZR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="In2-nR-7lJ" id="IEP-Hr-dxt"/>
-                        <segue destination="PNG-UI-7BI" kind="show" identifier="View Controller" id="VMZ-ZM-yTe"/>
+                        <outlet property="googleMapsContainer" destination="Q2W-em-Q6y" id="UcT-JZ-ehj"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LlM-qx-JeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120.8" y="102.99850074962519"/>
+            <point key="canvasLocation" x="424.80000000000001" y="83.208395802098963"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="eN5-mp-suo">
+        <scene sceneID="2j9-Dl-u9L">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PNG-UI-7BI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rLV-QJ-g0v" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EMe-AG-6aX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1gR-Ft-XYP">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Gsj-23-Z8m"/>
+                        <segue destination="kb2-tR-83k" kind="relationship" relationship="rootViewController" id="wob-gB-was"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ptt-MY-t2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaE-SA-a8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-609" y="103"/>
+            <point key="canvasLocation" x="-375" y="83"/>
         </scene>
     </scenes>
 </document>

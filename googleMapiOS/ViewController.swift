@@ -12,23 +12,35 @@ import GooglePlaces
 import GooglePlacePicker
 import CoreLocation
 
-class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMSMapViewDelegate, GMSAutocompleteFetcherDelegate, CLLocationManagerDelegate {
     
-    @IBAction func autocompleteClicked(_ sender: Any) {
-        let placePickerController = GMSAutocompleteViewController()
-               placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
-                present(placePickerController, animated: true, completion: nil)
+    //     * Called when an autocomplete request returns an error.
+    //     * @param error the error that was received.
+    public func didFailAutocompleteWithError(_ error: Error) {
+        //        resultText?.text = error.localizedDescription
     }
     
-//    @IBAction func autocompleteClicked(_ sender: UIButton) {
-//
-//        let placePickerController = GMSAutocompleteViewController()
-//        placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
-//        present(placePickerController, animated: true, completion: nil)
-//    }
+    //     * Called when autocomplete predictions are available.
+    //     * @param predictions an array of GMSAutocompletePrediction objects.
+    public func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
+        //self.resultsArray.count + 1
+        for prediction in predictions {
+            if let prediction = prediction as GMSAutocompletePrediction!{
+                self.resultsArray.append(prediction.attributedFullText.string)
+            }
+        }
+        self.searchResultController.reloadDataWithArray(self.resultsArray)
+        //   self.searchResultsTable.reloadDataWithArray(self.resultsArray)
+        print(resultsArray)
+    }
     
+    //@IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var googleMapsContainer: UIView!
     
-    @IBOutlet weak var mapView: GMSMapView!
+    var googleMapsView: GMSMapView!
+    var searchResultController: SearchResultsController!
+    var resultsArray = [String]()
+    var gmsFetcher: GMSAutocompleteFetcher!
     
     private var locationManager: CLLocationManager?
     private var currentLocation: CLLocation?
@@ -37,10 +49,11 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
     /// 初期描画の判断に利用
     private var initView: Bool = false
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         let camera = GMSCameraPosition.camera(withLatitude:47.603,
                                               longitude:-122.331,
                                               zoom:14)
@@ -50,11 +63,59 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         let position = CLLocationCoordinate2D(latitude:47.603,
                                               longitude:-122.331)
         mapView.isMyLocationEnabled = true
+        
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
         mapView.settings.myLocationButton = true
+    }
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+//        self.googleMapsContainer = GMSMapView(frame: self.googleMapsContainer.frame)
+//        self.view.addSubview(self.googleMapsView)
+        searchResultController = SearchResultsController()
+        searchResultController.delegate = self
+        gmsFetcher = GMSAutocompleteFetcher()
+        gmsFetcher.delegate = self
+    }
+    
+    
+    
+    
+    
+    
+//
+//    @IBAction func autocompleteClicked(_ sender: Any) {
+//        let placePickerController = GMSAutocompleteViewController()
+//               placePickerController.delegate = self as GMSAutocompleteViewControllerDelegate
+//                present(placePickerController, animated: true, completion: nil)
+//    }
+    
+    @IBAction func autocompleteClicked(_ sender: Any) {
+        let searchController = UISearchController(searchResultsController: searchResultController)
+        searchController.searchBar.delegate = self
+        self.present(searchController, animated:true, completion: nil)
+    }
+    
+    //     Locate map with longitude and longitude after search location on UISearchBar
+    //     - parameter lon:   longitude location
+    //     - parameter lat:   latitude location
+    //     - parameter title: title of address location
+    func locateWithLongitude(_ lon: Double, andLatitude lat: Double, andTitle title: String) {
+        DispatchQueue.main.async { () -> Void in
+            let position = CLLocationCoordinate2DMake(lat, lon)
+            let marker = GMSMarker(position: position)
+            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10)
+            let googleMapsView = GMSMapView.map(withFrame: .zero, camera: camera)
+            self.view = googleMapsView
+            
+            //self.googleMapsView.camera = camera
+            marker.title = "Address : \(title)"
+            marker.map = self.googleMapsView
+        }
     }
     
     //ランドマークをinforwindowに出す
@@ -70,6 +131,14 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
         infoMarker.infoWindowAnchor.y = 1
         infoMarker.map = mapView
         mapView.selectedMarker = infoMarker
+    }
+    
+    //     Searchbar when text change
+    //     - parameter searchBar:  searchbar UI
+    //     - parameter searchText: searchtext description
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.resultsArray.removeAll()
+        gmsFetcher?.sourceTextHasChanged(searchText)
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,13 +167,12 @@ class ViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDel
 //        }
 //    }
     
-    
 }
 
 
 
 extension ViewController: GMSAutocompleteViewControllerDelegate {
-    
+
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(place.name)")
@@ -112,26 +180,26 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
         print("Place attributions: \(String(describing: place.attributions))")
         dismiss(animated: true, completion: nil)
     }
-    
+
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
-    
+
     // User canceled the operation.
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     // Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
-    
+
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-    
+
 }
 
 
