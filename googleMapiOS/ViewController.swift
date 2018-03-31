@@ -137,9 +137,11 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
         let position = coordinate
         let marker = GMSMarker(position: position)
+        mapView.clear()
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
+       
     }
 }
 
