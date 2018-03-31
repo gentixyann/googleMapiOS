@@ -68,7 +68,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         marker.map = mapView
         mapView.settings.myLocationButton = true
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -77,7 +76,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         gmsFetcher = GMSAutocompleteFetcher()
         gmsFetcher.delegate = self
     }
-    
     
     @IBAction func autocompleteClicked(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: searchResultController)
@@ -141,7 +139,11 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
-       
+    }
+    
+    private func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
+        //markerは情報ウィンドウをタップされたmarker
+        //処理....
     }
 }
 
