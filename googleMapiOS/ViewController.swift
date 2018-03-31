@@ -17,13 +17,12 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     //     * Called when an autocomplete request returns an error.
     //     * @param error the error that was received.
     public func didFailAutocompleteWithError(_ error: Error) {
-        //        resultText?.text = error.localizedDescription
+               //resultText?.text = error.localizedDescription
     }
     
     //     * Called when autocomplete predictions are available.
     //     * @param predictions an array of GMSAutocompletePrediction objects.
     public func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
-        //self.resultsArray.count + 1
         for prediction in predictions {
             if let prediction = prediction as GMSAutocompletePrediction!{
                 self.resultsArray.append(prediction.attributedFullText.string)
@@ -56,14 +55,13 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
 
         let camera = GMSCameraPosition.camera(withLatitude:47.603,
                                               longitude:-122.331,
-                                              zoom:14)
+                                              zoom:15)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView.delegate = self
         self.view = mapView
         let position = CLLocationCoordinate2D(latitude:47.603,
                                               longitude:-122.331)
         mapView.isMyLocationEnabled = true
-        
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
@@ -74,8 +72,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        self.googleMapsContainer = GMSMapView(frame: self.googleMapsContainer.frame)
-//        self.view.addSubview(self.googleMapsView)
         searchResultController = SearchResultsController()
         searchResultController.delegate = self
         gmsFetcher = GMSAutocompleteFetcher()
@@ -97,15 +93,14 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         DispatchQueue.main.async { () -> Void in
             let position = CLLocationCoordinate2DMake(lat, lon)
             let marker = GMSMarker(position: position)
-            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 10)
+            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15)
             let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
             mapView.delegate = self
             self.view = mapView
-            
-            //self.googleMapsView.camera = camera
+            mapView.isMyLocationEnabled = true
+            mapView.settings.myLocationButton = true
             marker.title = "Address : \(title)"
             marker.map = mapView
-            //marker.map = self.googleMapsView
         }
     }
     
@@ -146,20 +141,7 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
     }
-    
-    // MARK: CLLocationManagerDelegate
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if !self.initView {
-//            // 初期描画時のマップ中心位置の移動
-//            let camera = GMSCameraPosition.camera(withTarget: (locations.last?.coordinate)!, zoom: self.zoomLevel)
-//            self.mapView.camera = camera
-//            self.locationManager?.stopUpdatingLocation()
-//            self.initView = true
-//        }
-//    }
-    
 }
-
 
 
 extension ViewController: GMSAutocompleteViewControllerDelegate {
