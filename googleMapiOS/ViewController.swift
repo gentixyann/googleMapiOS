@@ -72,11 +72,11 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         let position = CLLocationCoordinate2D(latitude:47.603,
                                               longitude:-122.331)
         mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
-        mapView.settings.myLocationButton = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
