@@ -46,41 +46,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="googleMapsContainer" destination="Q2W-em-Q6y" id="UcT-JZ-ehj"/>
-                        <segue destination="bK6-Rg-w8H" kind="show" identifier="nextSegue" id="azS-iC-Ul6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LlM-qx-JeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="424.80000000000001" y="83.208395802098963"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="unm-Sn-37Y">
-            <objects>
-                <viewController storyboardIdentifier="youtubeView" id="bK6-Rg-w8H" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OsY-b2-sOC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHQ-C2-PqN" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="164" width="375" height="265"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="kHQ-C2-PqN" firstAttribute="trailing" secondItem="bAW-YP-aAC" secondAttribute="trailing" id="Z3f-Ou-5Pj"/>
-                            <constraint firstItem="bAW-YP-aAC" firstAttribute="bottom" secondItem="kHQ-C2-PqN" secondAttribute="bottom" constant="194" id="kUs-Zy-q39"/>
-                            <constraint firstItem="kHQ-C2-PqN" firstAttribute="leading" secondItem="bAW-YP-aAC" secondAttribute="leading" id="u5R-JH-sBr"/>
-                            <constraint firstItem="kHQ-C2-PqN" firstAttribute="top" secondItem="bAW-YP-aAC" secondAttribute="top" constant="100" id="zDV-cs-pGe"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="bAW-YP-aAC"/>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="92k-eO-qIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1240.8" y="82.3088455772114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2j9-Dl-u9L">

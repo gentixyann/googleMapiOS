@@ -2,44 +2,36 @@
 //  YTViewController.swift
 //  googleMapiOS
 //
-//  Created by げんと on 2018/03/31.
+//  Created by げんと on 2018/04/01.
 //  Copyright © 2018年 Gento. All rights reserved.
 //
 
 import UIKit
-import youtube_ios_player_helper
 
-//class YTViewController: UITableViewController {
-class YTViewController: UIViewController, YTPlayerViewDelegate {
-    @IBOutlet weak var playerView: YTPlayerView!
-    @IBOutlet weak var stateLabel: UILabel!
+class YTViewController: UIViewController {
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
         
-        let youtubeView = YTPlayerView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 240))
-        youtubeView.load(withVideoId: "4BCxqrhsjOw", playerVars: ["playsinline": 1])
-        view.addSubview(youtubeView)
     }
-    // MARK: - IBAction
-    @IBAction func tapPlay(sender: AnyObject) {
-        self.playerView.playVideo()
-    }
-    @IBAction func tapPause(sender: AnyObject) {
-        self.playerView.pauseVideo()
-    }
-    @IBAction func tapStop(sender: AnyObject) {
-        self.playerView.stopVideo()
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-}
 
-extension ViewController: YTPlayerViewDelegate {
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {}
-    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {}
-    func playerView(_ playerView: YTPlayerView, didChangeTo quality: YTPlaybackQuality) {}
-    func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {}
-    func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {}
-    func playerViewPreferredWebViewBackgroundColor(_ playerView: YTPlayerView) -> UIColor { return .blue }
-    func playerViewPreferredInitialLoading(_ playerView: YTPlayerView) -> UIView? { return nil }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
