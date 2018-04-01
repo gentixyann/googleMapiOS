@@ -36,6 +36,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="play" id="CB5-YI-Vhx">
                             <connections>
                                 <action selector="moveYoutube:" destination="kb2-tR-83k" id="3LE-Wh-YQP"/>
+                                <segue destination="2kI-7r-IPR" kind="show" identifier="goYoutube" id="SgW-Pm-fXF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="u9r-sY-hHv">
@@ -51,6 +52,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LlM-qx-JeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="424.80000000000001" y="83.208395802098963"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aQj-XR-kQk">
+            <objects>
+                <viewController id="2kI-7r-IPR" customClass="YTViewController" customModule="googleMapiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oiI-05-7aW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quT-KA-2d8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="292"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="quT-KA-2d8" firstAttribute="top" secondItem="WhO-ut-Ubs" secondAttribute="top" id="27v-hy-oxe"/>
+                            <constraint firstItem="WhO-ut-Ubs" firstAttribute="bottom" secondItem="quT-KA-2d8" secondAttribute="bottom" constant="311" id="Bhc-9B-jqT"/>
+                            <constraint firstItem="quT-KA-2d8" firstAttribute="leading" secondItem="WhO-ut-Ubs" secondAttribute="leading" id="eEV-BK-pGA"/>
+                            <constraint firstItem="quT-KA-2d8" firstAttribute="trailing" secondItem="WhO-ut-Ubs" secondAttribute="trailing" id="nHb-g2-pGk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WhO-ut-Ubs"/>
+                    </view>
+                    <connections>
+                        <outlet property="myWebView" destination="quT-KA-2d8" id="o9o-ZX-ngh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce3-qj-qgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="85.907046476761622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2j9-Dl-u9L">
