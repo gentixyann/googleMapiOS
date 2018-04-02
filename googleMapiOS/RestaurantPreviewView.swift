@@ -11,15 +11,16 @@ import UIKit
 import WebKit
 
 class RestaurantPreviewView: UIView {
-    var webView: WKWebView!
+    
+    //let videoView: WKWebView
     
     //overrideは継承した親クラスのメソッドを上書きする。継承した親クラスの一部のメソッドの中身を変更したい場合に使う。
-    override init(frame: CGRect) {
     //superで、親クラスのメソッドやプロパティにアクセス。この場合UIViewクラス
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor=UIColor.clear
-        self.clipsToBounds=true
-        self.layer.masksToBounds=true
+//        self.backgroundColor=UIColor.clear
+//        self.clipsToBounds=true
+//        self.layer.masksToBounds=true
         //getVideo(videoCode: "OVGbAFy36xM")
         setupViews()
     }
@@ -79,10 +80,6 @@ class RestaurantPreviewView: UIView {
 //        return v
 //    }()
     
-//    func getVideo(videoCode: String){
-//                let url = URL(string: "https://www.youtube.com/embed/\(videoCode)")
-//                webView.load(URLRequest(url: url!))
-//            }
     
     let videoView: WKWebView = {
         let v=WKWebView()

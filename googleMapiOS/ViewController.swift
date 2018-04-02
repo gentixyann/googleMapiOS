@@ -96,6 +96,13 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         self.present(searchController, animated:true, completion: nil)
     }
     
+    //DetailsVCに遷移する処理
+    @objc func restaurantTapped(tag: Int) {
+        let v=DetailsVC()
+        //v.passedData = previewDemoData[tag]
+        self.navigationController?.pushViewController(v, animated: true)
+    }
+    
     //     Locate map with longitude and longitude after search location on UISearchBar
     //     - parameter lon:   longitude location
     //     - parameter lat:   latitude location
