@@ -11,20 +11,32 @@ import UIKit
 import WebKit
 
 class RestaurantPreviewView: UIView {
+    var webView: WKWebView!
     
+    //overrideは継承した親クラスのメソッドを上書きする。継承した親クラスの一部のメソッドの中身を変更したい場合に使う。
     override init(frame: CGRect) {
+    //superで、親クラスのメソッドやプロパティにアクセス。この場合UIViewクラス
         super.init(frame: frame)
         self.backgroundColor=UIColor.clear
         self.clipsToBounds=true
         self.layer.masksToBounds=true
+        //getVideo(videoCode: "OVGbAFy36xM")
         setupViews()
     }
     
-    func setData(title: String, img: UIImage, price: Int) {
-        //lblTitle.text = title
-        //imgView.image = img
-        //lblPrice.text = "$\(price)"
-    }
+//    func setData(title: String, img: UIImage, price: Int) {
+//        //lblTitle.text = title
+//        //imgView.image = img
+//        //lblPrice.text = "$\(price)"
+//    }
+    
+    
+//    func getVideo(videoCode: String){
+//        let url = URL(string: "https://www.youtube.com/embed/\(videoCode)")
+//        webView.load(URLRequest(url: url!))
+//    }
+
+    
     
     func setupViews() {
         addSubview(containerView)
@@ -44,7 +56,14 @@ class RestaurantPreviewView: UIView {
 //        imgView.topAnchor.constraint(equalTo: lblTitle.bottomAnchor).isActive=true
 //        imgView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
 //        imgView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-//
+        
+        
+        addSubview(videoView)
+        videoView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
+        videoView.topAnchor.constraint(equalTo: topAnchor).isActive=true
+        videoView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
+        videoView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+
 //        addSubview(lblPrice)
 //        lblPrice.centerXAnchor.constraint(equalTo: centerXAnchor).isActive=true
 //        lblPrice.centerYAnchor.constraint(equalTo: imgView.centerYAnchor).isActive=true
@@ -58,6 +77,7 @@ class RestaurantPreviewView: UIView {
         return v
     }()
     
+    //ここで画像が決められてる
 //    let imgView: UIImageView = {
 //        let v=UIImageView()
 //        v.image=#imageLiteral(resourceName: "restaurant1")
@@ -66,7 +86,7 @@ class RestaurantPreviewView: UIView {
 //    }()
     
     
-    let imgView: WKWebView = {
+    let videoView: WKWebView = {
         let v=WKWebView()
         v.translatesAutoresizingMaskIntoConstraints=false
         return v
