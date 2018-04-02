@@ -185,7 +185,7 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         
 //        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 190))
         
-        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: 400, height: 190))
+        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: 400, height: 220))
         
 //        self.view.addSubview(btnMyLocation)
 //        btnMyLocation.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive=true

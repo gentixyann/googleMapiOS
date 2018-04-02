@@ -29,12 +29,6 @@ class RestaurantPreviewView: UIView {
 //        //imgView.image = img
 //        //lblPrice.text = "$\(price)"
 //    }
-    
-    
-//    func getVideo(videoCode: String){
-//        let url = URL(string: "https://www.youtube.com/embed/\(videoCode)")
-//        webView.load(URLRequest(url: url!))
-//    }
 
     
     
@@ -85,9 +79,15 @@ class RestaurantPreviewView: UIView {
 //        return v
 //    }()
     
+//    func getVideo(videoCode: String){
+//                let url = URL(string: "https://www.youtube.com/embed/\(videoCode)")
+//                webView.load(URLRequest(url: url!))
+//            }
     
     let videoView: WKWebView = {
         let v=WKWebView()
+        let url = URL(string: "https://www.youtube.com/embed/OVGbAFy36xM")
+        v.load(URLRequest(url: url!))
         v.translatesAutoresizingMaskIntoConstraints=false
         return v
     }()
