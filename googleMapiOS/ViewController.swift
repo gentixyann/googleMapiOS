@@ -77,6 +77,9 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         marker.title = "Hello World"
         marker.snippet = "Population: 8,174,100"
         marker.map = mapView
+        
+        setupViews()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -165,6 +168,36 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         //restaurantPreviewView.setData(title: data.title, img: data.img, price: data.price)
         return restaurantPreviewView
     }
+    
+    func setupViews() {
+//        view.addSubview(mapView)
+//        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive=true
+//        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive=true
+//        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive=true
+//        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 60).isActive=true
+//
+//        self.view.addSubview(txtFieldSearch)
+//        txtFieldSearch.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive=true
+//        txtFieldSearch.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive=true
+//        txtFieldSearch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive=true
+//        txtFieldSearch.heightAnchor.constraint(equalToConstant: 35).isActive=true
+//        setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "map_Pin"))
+        
+//        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 190))
+        
+        //let restaurantPreviewView = UIView()
+        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0,
+                                                            width: 400, height: 190))
+        
+//        self.view.addSubview(btnMyLocation)
+//        btnMyLocation.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive=true
+//        btnMyLocation.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive=true
+//        btnMyLocation.widthAnchor.constraint(equalToConstant: 50).isActive=true
+//        btnMyLocation.heightAnchor.constraint(equalTo: btnMyLocation.widthAnchor).isActive=true
+    }
+    
+    
+    
     
     var restaurantPreviewView: RestaurantPreviewView = {
         let v=RestaurantPreviewView()
