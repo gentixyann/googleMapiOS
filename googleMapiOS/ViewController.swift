@@ -155,6 +155,21 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         //markerは情報ウィンドウをタップされたmarker
         //処理....
     }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+        //        guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
+        //let data = previewDemoData[customMarkerView.tag]
+        
+        //guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
+        //let data = previewDemoData[customMarkerView.tag]
+        //restaurantPreviewView.setData(title: data.title, img: data.img, price: data.price)
+        return restaurantPreviewView
+    }
+    
+    var restaurantPreviewView: RestaurantPreviewView = {
+        let v=RestaurantPreviewView()
+        return v
+    }()
 }
 
 
