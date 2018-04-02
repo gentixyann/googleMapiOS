@@ -14,6 +14,39 @@ import CoreLocation
 
 class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMSMapViewDelegate, GMSAutocompleteFetcherDelegate, CLLocationManagerDelegate {
     
+    struct State {
+        let lat: CLLocationDegrees
+        let long: CLLocationDegrees
+    }
+    
+    let states = [
+        State(lat: 47.6080925784177, long: -122.327423729002),
+        State(lat: 47.6097899041662, long: -122.333718203008),
+        State(lat: 47.594839382953, long: -122.33772341162),
+        State(lat: 47.5941158586167, long: -122.327395230532),
+        State(lat: 47.6078805501033, long: -122.320128120482),
+        State(lat: 47.603111111111, long: -122.3311111111111)
+    ]
+    
+    
+    func setupMap(){
+        let camera = GMSCameraPosition.camera(withLatitude:47.603,
+                                              longitude:-122.331,
+                                              zoom:15)
+        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        mapView.delegate = self
+        self.view = mapView
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        
+        for state in states {
+            //let state_marker = GMSMarker()
+            let position = CLLocationCoordinate2D(latitude: state.lat, longitude: state.long)
+            let state_marker = GMSMarker(position: position)
+            state_marker.map = mapView
+        }
+    }
+    
     @IBAction func goMap(_ segue:UIStoryboardSegue) {}
     
 
@@ -21,17 +54,12 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         performSegue(withIdentifier: "nextSegue", sender: nil)
     }
     
-    
-    
-    
-    //     * Called when an autocomplete request returns an error.
-    //     * @param error the error that was received.
+    //     * @param error the error that was received. * Called when an autocomplete request returns an error.
     public func didFailAutocompleteWithError(_ error: Error) {
                //resultText?.text = error.localizedDescription
     }
     
-    //     * Called when autocomplete predictions are available.
-    //     * @param predictions an array of GMSAutocompletePrediction objects.
+    //     * @param predictions an array of GMSAutocompletePrediction objects.  * Called when autocomplete predictions are available.
     public func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
         for prediction in predictions {
             if let prediction = prediction as GMSAutocompletePrediction!{
@@ -62,24 +90,8 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        let camera = GMSCameraPosition.camera(withLatitude:47.603,
-                                              longitude:-122.331,
-                                              zoom:15)
-        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-        mapView.delegate = self
-        self.view = mapView
-        let position = CLLocationCoordinate2D(latitude:47.603,
-                                              longitude:-122.331)
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
-        let marker = GMSMarker(position: position)
-        marker.title = "Hello World"
-        marker.snippet = "Population: 8,174,100"
-        marker.map = mapView
-        
+        setupMap()
         setupViews()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,8 +131,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
 //            marker.map = self.mapView
 //        }
 //    }
-    
-    
     
     
     //DetailsVCに遷移する処理
@@ -183,8 +193,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         let position = coordinate
         let marker = GMSMarker(position: position)
         mapView.clear()
-        marker.title = "Hello World"
-        marker.snippet = "Population: 8,174,100"
         marker.map = mapView
     }
     
@@ -209,23 +217,10 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
 //        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive=true
 //        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive=true
 //        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 60).isActive=true
-//
-//        self.view.addSubview(txtFieldSearch)
-//        txtFieldSearch.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive=true
-//        txtFieldSearch.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive=true
-//        txtFieldSearch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive=true
-//        txtFieldSearch.heightAnchor.constraint(equalToConstant: 35).isActive=true
-//        setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "map_Pin"))
         
 //        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 190))
         
         restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: 400, height: 220))
-        
-//        self.view.addSubview(btnMyLocation)
-//        btnMyLocation.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive=true
-//        btnMyLocation.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive=true
-//        btnMyLocation.widthAnchor.constraint(equalToConstant: 50).isActive=true
-//        btnMyLocation.heightAnchor.constraint(equalTo: btnMyLocation.widthAnchor).isActive=true
     }
     
 //    //追加
