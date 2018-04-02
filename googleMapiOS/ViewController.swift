@@ -96,6 +96,33 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         self.present(searchController, animated:true, completion: nil)
     }
     
+//    func showPartyMarkers(lat: Double, long: Double) {
+//        mapView.clear()
+//        //for i in 0..<3 {
+//            for _ in 0..<3 {
+//            let randNum=Double(arc4random_uniform(30))/10000
+//            let marker=GMSMarker()
+//
+//            //let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[i].img, borderColor: UIColor.darkGray, tag: i)
+//            //marker.iconView=customMarker
+//
+//            let randInt = arc4random_uniform(4)
+//            if randInt == 0 {
+//                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long-randNum)
+//            } else if randInt == 1 {
+//                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long+randNum)
+//            } else if randInt == 2 {
+//                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long-randNum)
+//            } else {
+//                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long+randNum)
+//            }
+//            marker.map = self.mapView
+//        }
+//    }
+    
+    
+    
+    
     //DetailsVCに遷移する処理
     @objc func restaurantTapped(tag: Int) {
         let v=DetailsVC()
@@ -201,7 +228,12 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
 //        btnMyLocation.heightAnchor.constraint(equalTo: btnMyLocation.widthAnchor).isActive=true
     }
     
-    
+//    //追加
+//    let mapView: GMSMapView = {
+//        let v=GMSMapView()
+//        v.translatesAutoresizingMaskIntoConstraints=false
+//        return v
+//    }()
     
     
     var restaurantPreviewView: RestaurantPreviewView = {
