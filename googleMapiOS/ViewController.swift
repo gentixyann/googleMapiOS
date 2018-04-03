@@ -12,7 +12,9 @@ import GooglePlaces
 import GooglePlacePicker
 import CoreLocation
 
-class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMSMapViewDelegate, GMSAutocompleteFetcherDelegate, CLLocationManagerDelegate {
+//class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMSMapViewDelegate, GMSAutocompleteFetcherDelegate, CLLocationManagerDelegate {
+//
+class ViewController: UIViewController, GMSMapViewDelegate {
     
     struct State {
         let lat: CLLocationDegrees
@@ -54,23 +56,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         performSegue(withIdentifier: "nextSegue", sender: nil)
     }
     
-    //     * @param error the error that was received. * Called when an autocomplete request returns an error.
-    public func didFailAutocompleteWithError(_ error: Error) {
-               //resultText?.text = error.localizedDescription
-    }
-    
-    //     * @param predictions an array of GMSAutocompletePrediction objects.  * Called when autocomplete predictions are available.
-    public func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
-        for prediction in predictions {
-            if let prediction = prediction as GMSAutocompletePrediction!{
-                self.resultsArray.append(prediction.attributedFullText.string)
-            }
-        }
-        self.searchResultController.reloadDataWithArray(self.resultsArray)
-        //   self.searchResultsTable.reloadDataWithArray(self.resultsArray)
-        print(resultsArray)
-    }
-    
     //@IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var googleMapsContainer: UIView!
     
@@ -94,45 +79,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         setupViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        searchResultController = SearchResultsController()
-        searchResultController.delegate = self
-        gmsFetcher = GMSAutocompleteFetcher()
-        gmsFetcher.delegate = self
-    }
-    
-    @IBAction func autocompleteClicked(_ sender: Any) {
-        let searchController = UISearchController(searchResultsController: searchResultController)
-        searchController.searchBar.delegate = self
-        self.present(searchController, animated:true, completion: nil)
-    }
-    
-//    func showPartyMarkers(lat: Double, long: Double) {
-//        mapView.clear()
-//        //for i in 0..<3 {
-//            for _ in 0..<3 {
-//            let randNum=Double(arc4random_uniform(30))/10000
-//            let marker=GMSMarker()
-//
-//            //let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[i].img, borderColor: UIColor.darkGray, tag: i)
-//            //marker.iconView=customMarker
-//
-//            let randInt = arc4random_uniform(4)
-//            if randInt == 0 {
-//                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long-randNum)
-//            } else if randInt == 1 {
-//                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long+randNum)
-//            } else if randInt == 2 {
-//                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long-randNum)
-//            } else {
-//                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long+randNum)
-//            }
-//            marker.map = self.mapView
-//        }
-//    }
-    
-    
     //DetailsVCに遷移する処理
     //@objc func restaurantTapped(tag: Int){
     @objc func restaurantTapped(){
@@ -143,64 +89,13 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     
     
     @objc func onTappedPush(_ sender: Any) {
-        print(sender)
-        let vc = DetailsVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let v = DetailsVC()
+        self.navigationController?.pushViewController(v, animated: true)
     }
-    
-    
-    
-    //     Locate map with longitude and longitude after search location on UISearchBar
-    //     - parameter lon:   longitude location, - parameter lat:   latitude location
-    //     - parameter title: title of address location
-    func locateWithLongitude(_ lon: Double, andLatitude lat: Double, andTitle title: String) {
-        DispatchQueue.main.async { () -> Void in
-            let position = CLLocationCoordinate2DMake(lat, lon)
-            let marker = GMSMarker(position: position)
-            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15)
-            let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-            mapView.delegate = self
-            self.view = mapView
-            mapView.isMyLocationEnabled = true
-            mapView.settings.myLocationButton = true
-            marker.title = "Address : \(title)"
-            marker.map = mapView
-        }
-    }
-    
-    //ランドマークをinforwindowに出す Declare GMSMarker instance at the class level.
-    let infoMarker = GMSMarker()
-    // Attach an info window to the POI using the GMSMarker.
-    func mapView(_ mapView:GMSMapView, didTapPOIWithPlaceID placeID:String,
-                 name:String, location:CLLocationCoordinate2D) {
-        infoMarker.snippet = placeID
-        infoMarker.position = location
-        infoMarker.title = name
-        infoMarker.opacity = 0;
-        infoMarker.infoWindowAnchor.y = 1
-        infoMarker.map = mapView
-        mapView.selectedMarker = infoMarker
-    }
-    
-    //     Searchbar when text change
-    //     - parameter searchBar:  searchbar UI, - parameter searchText: searchtext description
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.resultsArray.removeAll()
-        gmsFetcher?.sourceTextHasChanged(searchText)
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK:GMSMapViewDelegate マップタッチで緯度経度ゲット
-    func mapView(_ mapView:GMSMapView, didTapAt coordinate:CLLocationCoordinate2D) {
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-        let position = coordinate
-        let marker = GMSMarker(position: position)
-        mapView.clear()
-        marker.map = mapView
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
@@ -223,36 +118,4 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         return v
     }()
 }
-
-
-extension ViewController: GMSAutocompleteViewControllerDelegate {
-
-    // Handle the user's selection.
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place address: \(String(describing: place.formattedAddress))")
-        print("Place attributions: \(String(describing: place.attributions))")
-        dismiss(animated: true, completion: nil)
-    }
-
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        // TODO: handle the error.
-        print("Error: ", error.localizedDescription)
-    }
-
-    // User canceled the operation.
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-
-    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
-
 
