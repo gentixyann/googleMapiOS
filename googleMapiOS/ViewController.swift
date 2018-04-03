@@ -134,15 +134,24 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     
     
     //DetailsVCに遷移する処理
-    @objc func restaurantTapped(tag: Int) {
-        let v=DetailsVC()
-        //v.passedData = previewDemoData[tag]
-        self.navigationController?.pushViewController(v, animated: true)
+    //@objc func restaurantTapped(tag: Int){
+//    @objc func restaurantTapped(){
+//        let v=DetailsVC()
+//        //v.passedData = previewDemoData[tag]
+//        self.navigationController?.pushViewController(v, animated: true)
+//    }
+    
+    
+    func onTappedPush(_ sender: Any) {
+        print(sender)
+        let vc = DetailsVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    
     //     Locate map with longitude and longitude after search location on UISearchBar
-    //     - parameter lon:   longitude location
-    //     - parameter lat:   latitude location
+    //     - parameter lon:   longitude location, - parameter lat:   latitude location
     //     - parameter title: title of address location
     func locateWithLongitude(_ lon: Double, andLatitude lat: Double, andTitle title: String) {
         DispatchQueue.main.async { () -> Void in
@@ -194,11 +203,6 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         let marker = GMSMarker(position: position)
         mapView.clear()
         marker.map = mapView
-    }
-    
-    private func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
-        //markerは情報ウィンドウをタップされたmarker
-        //処理....
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
