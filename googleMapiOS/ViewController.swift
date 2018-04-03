@@ -135,14 +135,14 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     
     //DetailsVCに遷移する処理
     //@objc func restaurantTapped(tag: Int){
-//    @objc func restaurantTapped(){
-//        let v=DetailsVC()
-//        //v.passedData = previewDemoData[tag]
-//        self.navigationController?.pushViewController(v, animated: true)
-//    }
+    @objc func restaurantTapped(){
+        let v=DetailsVC()
+        //v.passedData = previewDemoData[tag]
+        self.navigationController?.pushViewController(v, animated: true)
+    }
     
     
-    func onTappedPush(_ sender: Any) {
+    @objc func onTappedPush(_ sender: Any) {
         print(sender)
         let vc = DetailsVC()
         self.navigationController?.pushViewController(vc, animated: true)
@@ -168,8 +168,7 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
         }
     }
     
-    //ランドマークをinforwindowに出す
-    // Declare GMSMarker instance at the class level.
+    //ランドマークをinforwindowに出す Declare GMSMarker instance at the class level.
     let infoMarker = GMSMarker()
     // Attach an info window to the POI using the GMSMarker.
     func mapView(_ mapView:GMSMapView, didTapPOIWithPlaceID placeID:String,
@@ -184,8 +183,7 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     }
     
     //     Searchbar when text change
-    //     - parameter searchBar:  searchbar UI
-    //     - parameter searchText: searchtext description
+    //     - parameter searchBar:  searchbar UI, - parameter searchText: searchtext description
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.resultsArray.removeAll()
         gmsFetcher?.sourceTextHasChanged(searchText)
@@ -216,24 +214,9 @@ class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMS
     }
     
     func setupViews() {
-//        view.addSubview(mapView)
-//        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive=true
-//        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive=true
-//        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive=true
-//        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 60).isActive=true
-        
 //        restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 190))
-        
         restaurantPreviewView=RestaurantPreviewView(frame: CGRect(x: 0, y: 0, width: 400, height: 220))
     }
-    
-//    //追加
-//    let mapView: GMSMapView = {
-//        let v=GMSMapView()
-//        v.translatesAutoresizingMaskIntoConstraints=false
-//        return v
-//    }()
-    
     
     var restaurantPreviewView: RestaurantPreviewView = {
         let v=RestaurantPreviewView()
@@ -270,7 +253,6 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-
 }
 
 

@@ -79,7 +79,6 @@ class SearchResultsController: UITableViewController {
                 print("Error")
             }
         }
-        // 5
         task.resume()
     }
     

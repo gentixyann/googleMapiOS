@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsVC: UIViewController {
     
-    var passedData = (title: "Name", img: #imageLiteral(resourceName: "restaurant1"), price: 0)
+    //var passedData = (title: "Name", img: #imageLiteral(resourceName: "restaurant1"), price: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +38,21 @@ class DetailsVC: UIViewController {
         imgView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive=true
         imgView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive=true
         imgView.heightAnchor.constraint(equalToConstant: 200).isActive=true
-        imgView.image = passedData.img
+        //imgView.image = passedData.img
         
         containerView.addSubview(lblTitle)
         lblTitle.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15).isActive=true
         lblTitle.topAnchor.constraint(equalTo: imgView.bottomAnchor).isActive=true
         lblTitle.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15).isActive=true
         lblTitle.heightAnchor.constraint(equalToConstant: 50).isActive=true
-        lblTitle.text = passedData.title
+        //lblTitle.text = passedData.title
         
         containerView.addSubview(lblPrice)
         lblPrice.leftAnchor.constraint(equalTo: lblTitle.leftAnchor).isActive=true
         lblPrice.topAnchor.constraint(equalTo: lblTitle.bottomAnchor).isActive=true
         lblPrice.rightAnchor.constraint(equalTo: lblTitle.rightAnchor).isActive=true
         lblPrice.heightAnchor.constraint(equalToConstant: 40).isActive=true
-        lblPrice.text = "$\(passedData.price)"
+        //lblPrice.text = "$\(passedData.price)"
         
         containerView.addSubview(lblDescription)
         lblDescription.leftAnchor.constraint(equalTo: lblTitle.leftAnchor).isActive=true
@@ -78,7 +78,7 @@ class DetailsVC: UIViewController {
     
     let imgView: UIImageView = {
         let v=UIImageView()
-        v.image = #imageLiteral(resourceName: "restaurant1")
+        //v.image = #imageLiteral(resourceName: "restaurant1")
         v.contentMode = .scaleAspectFill
         v.clipsToBounds=true
         v.translatesAutoresizingMaskIntoConstraints=false
