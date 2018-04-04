@@ -82,8 +82,8 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         self.title = "Home"
         // Do any additional setup after loading the view, typically from a nib.
-        setupMap()
         setupViews()
+        setupMap()
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
@@ -95,17 +95,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         print("Yeah! Button is tapped!")
         //guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
         //let tag = customMarkerView.tag
+        //DetailsVCに遷移する処理
         restaurantTapped()
         print("YYYYY")
     }
-    
-    
-//    //DetailsVCに遷移する処理
-//    @objc func restaurantTapped(tag: Int){
-//        let v=DetailsVC()
-//        //v.passedData = previewDemoData[tag]
-//        self.navigationController?.pushViewController(v, animated: true)
-//    }
     
     //DetailsVCに遷移する処理
     @objc func restaurantTapped(){

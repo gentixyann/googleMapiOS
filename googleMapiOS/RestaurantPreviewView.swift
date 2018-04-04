@@ -28,13 +28,13 @@ class RestaurantPreviewView: UIView {
     
     
     func setupViews() {
-//        addSubview(containerView)
-//        containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
-//        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
-//        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
-//        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+        addSubview(containerView)
+        containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
+        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
+        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
+        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         
-        addSubview(videoView)
+        self.addSubview(videoView)
         videoView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
         videoView.topAnchor.constraint(equalTo: topAnchor).isActive=true
         videoView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
