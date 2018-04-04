@@ -16,19 +16,23 @@ import CoreLocation
 //
 class ViewController: UIViewController, GMSMapViewDelegate {
     
+    let customMarkerWidth: Int = 50
+    let customMarkerHeight: Int = 70
+    
     struct State {
         let lat: CLLocationDegrees
         let long: CLLocationDegrees
         let url: String
+        let i: Int
     }
     
     let states = [
-        State(lat: 47.6080925784177, long: -122.327423729002, url:"ha1"),
-        State(lat: 47.6097899041662, long: -122.333718203008, url:"ha2"),
-        State(lat: 47.594839382953, long: -122.33772341162, url:"ha3"),
-        State(lat: 47.5941158586167, long: -122.327395230532, url:"ha4"),
-        State(lat: 47.6078805501033, long: -122.320128120482, url:"ha5"),
-        State(lat: 47.603111111111, long: -122.3311111111111, url:"ha6")
+        State(lat: 47.6080925784177, long: -122.327423729002, url:"ha1", i:1),
+        State(lat: 47.6097899041662, long: -122.333718203008, url:"ha2", i:2),
+        State(lat: 47.594839382953, long: -122.33772341162, url:"ha3", i:3),
+        State(lat: 47.5941158586167, long: -122.327395230532, url:"ha4", i:4),
+        State(lat: 47.6078805501033, long: -122.320128120482, url:"ha5", i:5),
+        State(lat: 47.603111111111, long: -122.3311111111111, url:"ha6", i:6)
     ]
     
     let previewDemoData = [(title: "The Polar Junction", img: #imageLiteral(resourceName: "restaurant1"), price: 10), (title: "The Nifty Lounge", img: #imageLiteral(resourceName: "restaurant2"), price: 8), (title: "The Lunar Petal", img: #imageLiteral(resourceName: "restaurant3"), price: 12)]
@@ -48,6 +52,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             let state_marker = GMSMarker(position: position)
             state_marker.title = state.url
             state_marker.map = mapView
+            
+            
+//            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[i].img, borderColor: UIColor.darkGray, tag: i)
+            
         }
     }
     
@@ -75,7 +83,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         self.title = "Home"
         // Do any additional setup after loading the view, typically from a nib.
         setupMap()
-        //setupViews()
+        setupViews()
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
@@ -85,11 +93,22 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("Yeah! Button is tapped!")
+        //guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
+        //let tag = customMarkerView.tag
+        restaurantTapped()
+        print("YYYYY")
     }
     
     
+//    //DetailsVCに遷移する処理
+//    @objc func restaurantTapped(tag: Int){
+//        let v=DetailsVC()
+//        //v.passedData = previewDemoData[tag]
+//        self.navigationController?.pushViewController(v, animated: true)
+//    }
+    
     //DetailsVCに遷移する処理
-    @objc func restaurantTapped(tag: Int){
+    @objc func restaurantTapped(){
         let v=DetailsVC()
         //v.passedData = previewDemoData[tag]
         self.navigationController?.pushViewController(v, animated: true)

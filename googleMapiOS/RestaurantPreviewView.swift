@@ -28,11 +28,11 @@ class RestaurantPreviewView: UIView {
     
     
     func setupViews() {
-        addSubview(containerView)
-        containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
-        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
-        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
-        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+//        addSubview(containerView)
+//        containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
+//        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
+//        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
+//        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         
         addSubview(videoView)
         videoView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
@@ -40,23 +40,23 @@ class RestaurantPreviewView: UIView {
         videoView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
         videoView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         
-        containerView.addSubview(lblTitle)
-        lblTitle.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive=true
-        lblTitle.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
-        lblTitle.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive=true
-        lblTitle.heightAnchor.constraint(equalToConstant: 35).isActive=true
-
-        addSubview(imgView)
-        imgView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
-        imgView.topAnchor.constraint(equalTo: lblTitle.bottomAnchor).isActive=true
-        imgView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
-        imgView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-
-        addSubview(lblPrice)
-        lblPrice.centerXAnchor.constraint(equalTo: centerXAnchor).isActive=true
-        lblPrice.centerYAnchor.constraint(equalTo: imgView.centerYAnchor).isActive=true
-        lblPrice.widthAnchor.constraint(equalToConstant: 90).isActive=true
-        lblPrice.heightAnchor.constraint(equalToConstant: 40).isActive=true
+//        containerView.addSubview(lblTitle)
+//        lblTitle.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive=true
+//        lblTitle.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
+//        lblTitle.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive=true
+//        lblTitle.heightAnchor.constraint(equalToConstant: 35).isActive=true
+//
+//        addSubview(imgView)
+//        imgView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
+//        imgView.topAnchor.constraint(equalTo: lblTitle.bottomAnchor).isActive=true
+//        imgView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
+//        imgView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+//
+//        addSubview(lblPrice)
+//        lblPrice.centerXAnchor.constraint(equalTo: centerXAnchor).isActive=true
+//        lblPrice.centerYAnchor.constraint(equalTo: imgView.centerYAnchor).isActive=true
+//        lblPrice.widthAnchor.constraint(equalToConstant: 90).isActive=true
+//        lblPrice.heightAnchor.constraint(equalToConstant: 40).isActive=true
     }
     
     
