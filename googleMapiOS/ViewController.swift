@@ -19,15 +19,16 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     struct State {
         let lat: CLLocationDegrees
         let long: CLLocationDegrees
+        let url: String
     }
     
     let states = [
-        State(lat: 47.6080925784177, long: -122.327423729002),
-        State(lat: 47.6097899041662, long: -122.333718203008),
-        State(lat: 47.594839382953, long: -122.33772341162),
-        State(lat: 47.5941158586167, long: -122.327395230532),
-        State(lat: 47.6078805501033, long: -122.320128120482),
-        State(lat: 47.603111111111, long: -122.3311111111111)
+        State(lat: 47.6080925784177, long: -122.327423729002, url:"ha1"),
+        State(lat: 47.6097899041662, long: -122.333718203008, url:"ha2"),
+        State(lat: 47.594839382953, long: -122.33772341162, url:"ha3"),
+        State(lat: 47.5941158586167, long: -122.327395230532, url:"ha4"),
+        State(lat: 47.6078805501033, long: -122.320128120482, url:"ha5"),
+        State(lat: 47.603111111111, long: -122.3311111111111, url:"ha6")
     ]
     
     let previewDemoData = [(title: "The Polar Junction", img: #imageLiteral(resourceName: "restaurant1"), price: 10), (title: "The Nifty Lounge", img: #imageLiteral(resourceName: "restaurant2"), price: 8), (title: "The Lunar Petal", img: #imageLiteral(resourceName: "restaurant3"), price: 12)]
@@ -45,6 +46,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         for state in states {
             let position = CLLocationCoordinate2D(latitude: state.lat, longitude: state.long)
             let state_marker = GMSMarker(position: position)
+            state_marker.title = state.url
             state_marker.map = mapView
         }
     }
@@ -56,7 +58,6 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         performSegue(withIdentifier: "nextSegue", sender: nil)
     }
     
-    //@IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var googleMapsContainer: UIView!
     
     var googleMapsView: GMSMapView!
@@ -74,36 +75,29 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         self.title = "Home"
         // Do any additional setup after loading the view, typically from a nib.
         setupMap()
-        setupViews()
-    }
-    
-    //DetailsVCに遷移する処理
-    //@objc func restaurantTapped(tag: Int){
-    @objc func restaurantTapped(){
-        let v=DetailsVC()
-        //v.passedData = previewDemoData[tag]
-        self.navigationController?.pushViewController(v, animated: true)
-    }
-    
-    @objc func goNext(_ sender: UIView) {
-        print("Yeah! Button is tapped!")
-        let next2vc = DetailsVC()
-        //ここで次の画面の色を指定してる
-        self.navigationController?.pushViewController(next2vc, animated: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //setupViews()
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-        
+
         return restaurantPreviewView
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("Yeah! Button is tapped!")
+    }
+    
+    
+    //DetailsVCに遷移する処理
+    @objc func restaurantTapped(tag: Int){
+        let v=DetailsVC()
+        //v.passedData = previewDemoData[tag]
+        self.navigationController?.pushViewController(v, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func setupViews() {
