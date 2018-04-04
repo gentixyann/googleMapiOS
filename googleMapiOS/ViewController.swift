@@ -74,6 +74,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Home"
         // Do any additional setup after loading the view, typically from a nib.
         setupMap()
         setupViews()
@@ -87,10 +88,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         self.navigationController?.pushViewController(v, animated: true)
     }
     
-    
-    @objc func onTappedPush(_ sender: Any) {
-        let v = DetailsVC()
-        self.navigationController?.pushViewController(v, animated: true)
+    @objc func goNext(_ sender: UIView) {
+        let next2vc = DetailsVC()
+        //ここで次の画面の色を指定してる
+        self.navigationController?.pushViewController(next2vc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

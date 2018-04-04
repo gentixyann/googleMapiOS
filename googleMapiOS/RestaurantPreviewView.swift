@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import WebKit
 
+//class RestaurantPreviewView: UIView {
 class RestaurantPreviewView: UIView {
     
     //overrideは継承した親クラスのメソッドを上書きする。継承した親クラスの一部のメソッドの中身を変更したい場合に使う。
@@ -30,6 +31,7 @@ class RestaurantPreviewView: UIView {
         let goButton = UIButton()
         goButton.frame = CGRect(x: 0,y: 0,width: 100,height:100)
         goButton.backgroundColor = UIColor.yellow
+        goButton.addTarget(self, action: #selector(ViewController.goNext(_:)), for: .touchUpInside)
         addSubview(goButton)
         
 //        addSubview(videoView)
@@ -38,6 +40,14 @@ class RestaurantPreviewView: UIView {
 //        videoView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
 //        videoView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
     }
+    
+//    @objc func goNext(_ sender: UIButton) {
+//        let next2vc = DetailsVC()
+//        //ここで次の画面の色を指定してる
+//        next2vc.view.backgroundColor = UIColor.white
+//        self.navigationController?.pushViewController(next2vc, animated: true)
+//    }
+
     
     
     
