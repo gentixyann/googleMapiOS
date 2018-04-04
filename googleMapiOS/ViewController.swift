@@ -30,6 +30,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         State(lat: 47.603111111111, long: -122.3311111111111)
     ]
     
+    let previewDemoData = [(title: "The Polar Junction", img: #imageLiteral(resourceName: "restaurant1"), price: 10), (title: "The Nifty Lounge", img: #imageLiteral(resourceName: "restaurant2"), price: 8), (title: "The Lunar Petal", img: #imageLiteral(resourceName: "restaurant3"), price: 12)]
     
     func setupMap(){
         let camera = GMSCameraPosition.camera(withLatitude:47.603,
@@ -42,7 +43,6 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         mapView.settings.myLocationButton = true
         
         for state in states {
-            //let state_marker = GMSMarker()
             let position = CLLocationCoordinate2D(latitude: state.lat, longitude: state.long)
             let state_marker = GMSMarker(position: position)
             state_marker.map = mapView
@@ -63,14 +63,11 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     var searchResultController: SearchResultsController!
     var resultsArray = [String]()
     var gmsFetcher: GMSAutocompleteFetcher!
-    
     private var locationManager: CLLocationManager?
     private var currentLocation: CLLocation?
     private var placesClient: GMSPlacesClient!
     private var zoomLevel: Float = 15.0
-    /// 初期描画の判断に利用
     private var initView: Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +86,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     }
     
     @objc func goNext(_ sender: UIView) {
+        print("Yeah! Button is tapped!")
         let next2vc = DetailsVC()
         //ここで次の画面の色を指定してる
         self.navigationController?.pushViewController(next2vc, animated: true)
@@ -100,13 +98,12 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-        //        guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
-        //let data = previewDemoData[customMarkerView.tag]
         
-        //guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
-        //let data = previewDemoData[customMarkerView.tag]
-        //restaurantPreviewView.setData(title: data.title, img: data.img, price: data.price)
         return restaurantPreviewView
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("Yeah! Button is tapped!")
     }
     
     func setupViews() {
