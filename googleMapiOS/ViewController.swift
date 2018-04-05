@@ -109,7 +109,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         let v=DetailsVC()
        //v.passedData = previewDemoData[tag]
         //v.passedData = states[tag]
-       // print("tagの中身: \(tag)")
+        print("tagの中身: \(tag)")
         self.navigationController?.pushViewController(v, animated: true)
     }
     
