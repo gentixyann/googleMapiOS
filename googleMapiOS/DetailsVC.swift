@@ -12,7 +12,23 @@ import WebKit
 
 class DetailsVC: UIViewController {
     
+//    struct State {
+//        let url: String
+//        let i: Int
+//    }
+    
+//    let states = [
+//        State(url:"https://www.youtube.com/embed/OVGbAFy36xM", i:1),
+//        State( url:"ha2", i:2),
+//        State( url:"ha3", i:3),
+//        State( url:"ha4", i:4),
+//        State( url:"ha5", i:5),
+//        State( url:"ha6", i:6)
+//    ]
+    
     //var passedData = (title: "Name", img: #imageLiteral(resourceName: "restaurant1"), price: 0)
+    
+    var passedData: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

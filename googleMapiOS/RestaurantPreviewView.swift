@@ -20,10 +20,14 @@ class RestaurantPreviewView: UIView {
         setupViews()
     }
     
-    func setData(title: String, img: UIImage, price: Int) {
-        lblTitle.text = title
-        imgView.image = img
-        lblPrice.text = "$\(price)"
+//    func setData(title: String, img: UIImage, price: Int) {
+//        lblTitle.text = title
+//        imgView.image = img
+//        lblPrice.text = "$\(price)"
+//    }
+    
+    func setData(id: Int) {
+    
     }
     
     

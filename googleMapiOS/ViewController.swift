@@ -17,7 +17,7 @@ import CoreLocation
 class ViewController: UIViewController, GMSMapViewDelegate {
     
     let customMarkerWidth: Int = 50
-    let customMarkerHeight: Int = 70
+    let customMarkerHeight: Int = 60
     
     struct State {
         let lat: CLLocationDegrees
@@ -50,9 +50,9 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         for state in states {
             let position = CLLocationCoordinate2D(latitude: state.lat, longitude: state.long)
             let state_marker = GMSMarker(position: position)
-            state_marker.title = state.url
+            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: #imageLiteral(resourceName: "Image-2"), borderColor: UIColor.darkGray, tag: state.i)
+            state_marker.iconView=customMarker
             state_marker.map = mapView
-            
             
 //            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[i].img, borderColor: UIColor.darkGray, tag: i)
             
@@ -87,23 +87,29 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-
+        guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
+        //let data = previewDemoData[customMarkerView.tag]
+        let data = states[customMarkerView.tag]
+        print("dataの中身: \(data)")
+        restaurantPreviewView.setData(id: data.i)
         return restaurantPreviewView
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("Yeah! Button is tapped!")
-        //guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
-        //let tag = customMarkerView.tag
+        guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
+        let tag = customMarkerView.tag
         //DetailsVCに遷移する処理
-        restaurantTapped()
-        print("YYYYY")
+        restaurantTapped(tag: tag)
+        print("DetailsVCに遷移: \(tag)")
     }
     
     //DetailsVCに遷移する処理
-    @objc func restaurantTapped(){
+    @objc func restaurantTapped(tag: Int){
         let v=DetailsVC()
-        //v.passedData = previewDemoData[tag]
+       //v.passedData = previewDemoData[tag]
+        //v.passedData = states[tag]
+       // print("tagの中身: \(tag)")
         self.navigationController?.pushViewController(v, animated: true)
     }
     
