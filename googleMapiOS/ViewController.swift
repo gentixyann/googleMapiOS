@@ -27,7 +27,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     }
     
     let states = [
-        State(lat: 47.6080925784177, long: -122.327423729002, url:"ha1", i:1),
+        State(lat: 47.6080925784177, long: -122.327423729002, url:"https://www.youtube.com/embed/OVGbAFy36xM", i:1),
         State(lat: 47.6097899041662, long: -122.333718203008, url:"ha2", i:2),
         State(lat: 47.594839382953, long: -122.33772341162, url:"ha3", i:3),
         State(lat: 47.5941158586167, long: -122.327395230532, url:"ha4", i:4),
