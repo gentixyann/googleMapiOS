@@ -13,7 +13,7 @@ import GooglePlacePicker
 import CoreLocation
 
 //class ViewController: UIViewController, UISearchBarDelegate, LocateOnTheMap, GMSMapViewDelegate, GMSAutocompleteFetcherDelegate, CLLocationManagerDelegate {
-//
+
 class ViewController: UIViewController, GMSMapViewDelegate {
     
     let customMarkerWidth: Int = 50
